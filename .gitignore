@@ -1,0 +1,24 @@
+# 后端
+backend/.env
+backend/notes/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# 前端
+frontend/node_modules/
+frontend/dist/
+
+# 运行时
+cache/
+notes/
+
+# 项目方案文档（不上传）
+项目方案.md
+Q&A专题.md
+流程.md
+开发流程.md
+
+# IDE
+.vscode/
+.idea/

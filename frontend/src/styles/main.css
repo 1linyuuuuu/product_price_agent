@@ -1,0 +1,533 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.app-header .subtitle {
+  color: #888;
+  font-size: 14px;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* SearchInput */
+.search-input-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.input-wrapper input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: #4a90d9;
+}
+
+.input-wrapper button {
+  padding: 12px 24px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.input-wrapper button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.input-wrapper button:hover:not(:disabled) {
+  background: #3a7bc8;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #bbb;
+}
+
+/* ProgressPanel */
+.progress-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.step.active {
+  color: #4a90d9;
+  font-weight: 600;
+}
+
+.step.done {
+  color: #52c41a;
+}
+
+.step .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.detail {
+  font-size: 13px;
+  color: #888;
+}
+
+/* PriceTable — component-scoped styles in PriceTable.vue */
+
+.table-placeholder {
+  padding: 40px;
+  text-align: center;
+  color: #aaa;
+}
+
+/* TrendChart */
+.trend-chart-card {
+  background: #f9f0ff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #7c5cfc;
+}
+
+.trend-chart-card h2 {
+  margin-bottom: 12px;
+  color: #5b3cc4;
+}
+
+.chart-section {
+  margin-bottom: 16px;
+}
+
+.chart-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.chart-container {
+  width: 100%;
+  height: 360px;
+}
+
+.chart-empty {
+  padding: 40px;
+  text-align: center;
+  color: #aaa;
+}
+
+/* Report 卡片（比价分析报告，sections 1-4） */
+.report-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #4a90d9;
+}
+
+.report-card h2 {
+  margin-bottom: 16px;
+  color: #2b6cb0;
+}
+
+/* 购买建议卡片（section 5，独立突出） */
+.buy-advice-card {
+  background: #fff7e6;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(250, 140, 22, 0.12);
+  border-left: 4px solid #fa8c16;
+}
+
+.buy-advice-card h2 {
+  margin-bottom: 16px;
+  color: #d46b08;
+}
+
+/* --- 商品图片内联画廊 --- */
+.product-gallery {
+  margin: 16px 0;
+}
+
+.gallery-title {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.gallery-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery-item {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  scroll-snap-align: start;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 推荐商品卡片网格 --- */
+.recommend-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.product-card-image {
+  width: 100%;
+  height: 160px;
+  background: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 14px;
+  background: #f5f5f5;
+}
+
+.product-card-body {
+  padding: 14px;
+}
+
+.product-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 6px;
+}
+
+.product-card-condition {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.product-card-condition.new {
+  background: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.product-card-condition.used {
+  background: #fff7e6;
+  color: #fa8c16;
+  border: 1px solid #ffd591;
+}
+
+.product-card-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #cf1322;
+  margin-bottom: 4px;
+}
+
+.product-card-platform {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.product-card-reason {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.product-card-link {
+  display: inline-block;
+  font-size: 13px;
+  color: #fa8c16;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.product-card-link:hover {
+  color: #d46b08;
+}
+
+/* --- 图片预览弹窗 --- */
+.image-preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.image-preview {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  cursor: default;
+}
+
+/* --- 报告正文 --- */
+.report {
+  line-height: 1.9;
+  color: #444;
+}
+
+.report h2 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e6f0fa;
+}
+
+.report h3 {
+  font-size: 15px;
+  color: #3a6e9e;
+  margin: 16px 0 8px;
+}
+
+.report h4 {
+  font-size: 14px;
+  color: #5a7d9a;
+  margin: 12px 0 6px;
+}
+
+.report p {
+  margin: 6px 0;
+}
+
+.report ul, .report ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.report li {
+  margin: 4px 0;
+}
+
+/* --- 报告内表格 --- */
+.report table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 12px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.report th {
+  background: #f0f4f8;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 2px solid #dde4ed;
+}
+
+.report td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.report tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.report tbody tr:hover {
+  background: #f0f5fa;
+}
+
+/* --- 报告内引用块 (关键结论卡片) --- */
+.report blockquote {
+  border-left: 4px solid #89b4d4;
+  background: #f8fafc;
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+}
+
+.report blockquote p {
+  margin: 0;
+}
+
+/* --- 报告内强调/价格数字 --- */
+.report strong {
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* --- 报告内分隔线 --- */
+.report hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+/* --- 推荐内容正文 --- */
+.recommendation-content {
+  line-height: 1.9;
+  color: #5a3e1b;
+  font-size: 15px;
+}
+
+.recommendation-content h2 {
+  font-size: 17px;
+  color: #d46b08;
+  margin: 20px 0 8px;
+}
+
+.recommendation-content h3 {
+  font-size: 15px;
+  color: #b8650a;
+  margin: 14px 0 6px;
+}
+
+.recommendation-content strong {
+  color: #d46b08;
+}
+
+.recommendation-content ul, .recommendation-content ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.recommendation-content li {
+  margin: 4px 0;
+}
+
+.recommendation-content p {
+  margin: 6px 0;
+}
+
+.recommendation-content blockquote {
+  border-left: 4px solid #fa8c16;
+  background: #fff;
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+}
+
+
+
+/* Error */
+.error-state {
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #cf1322;
+}
